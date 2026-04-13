@@ -50,7 +50,12 @@ class MainScreen extends StatelessWidget {
 
                 //
                 // TODO: Push a GameScreen and give it the HangmanGame object.
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GameScreen(game: game),
+                  ),
+                );
               },
             )
           ],

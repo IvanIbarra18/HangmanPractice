@@ -30,7 +30,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text("Guess Letter"), findsOneWidget);
-  }, skip: true);
+  }, skip: false);
 
 
   // Given I am  on the Game Screen, When I input a single letter ('a'-'z', 'A'-'Z') 
@@ -59,7 +59,7 @@ void main() {
 
     // We expect for the game to now have registered that we have correctly guessed the first letter of the word banana that we instantiated it with
     expect(find.text('b-----'), findsOneWidget);
-  }, skip: true);
+  }, skip: false);
 
   testWidgets(
       'After guessing the letter n, we are expecting the game to continue registering it as a correct guess and updating our progress',
@@ -86,7 +86,7 @@ void main() {
 
     //We expect the game to register our guess of the letter n as correct and update our progress
     expect(find.text('b-n-n-'), findsOneWidget);
-  }, skip: true);
+  }, skip: false);
 
 
   // Given I am on the Game Screen, When I input a single letter ('a'-'z', 'A'-'Z') 
@@ -125,7 +125,7 @@ void main() {
 
     //We expect to see that our incorrect guess has been added to the list of incorrect guesses
     expect(find.text('Wrong Guesses: z'), findsOneWidget);
-  }, skip: true);
+  }, skip: false);
 
 
   // Given I am on the Game Screen And I have guessed all letters but one, 
@@ -154,7 +154,7 @@ void main() {
 
     // If we are successfully navigated to the win screen we can expect to see this text
     expect(find.text('You Win'), findsOneWidget);
-  }, skip: true);
+  }, skip: false);
 
 
   // Given I am on the Win Screen, When I click the "New Game" button, 

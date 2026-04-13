@@ -13,7 +13,7 @@ void main() {
       final hangmanGame = HangmanGame(word);
       // Expect that the HangmanGame object's word matches the originally passed word
       expect(hangmanGame.word(), word);
-    }, skip: true);
+    }, skip: false);
 
     test('Function correctGuesses() should return empty string initially', () {
       // Make a variable that we will use to pass to the constructor as our word.
@@ -22,7 +22,7 @@ void main() {
       final hangmanGame = HangmanGame(word);
       // Expect that the game doesn't have any correct guesses since we have not guessed anything yet.
       expect(hangmanGame.correctGuesses().isEmpty, isTrue);
-    }, skip: true);
+    }, skip: false);
 
     test('Function wrongGuesses() should return empty string initially', () {
       // Make a variable that we will use to pass to the constructor as our word.
@@ -31,7 +31,7 @@ void main() {
       final hangmanGame = HangmanGame(word);
       // Expect that the game doesn't have any incorrect guesses since we have not guessed anything yet.
       expect(hangmanGame.wrongGuesses().isEmpty, isTrue);
-    }, skip: true);
+    }, skip: false);
   });
 
   // This test group will run several tests on the way the game should respond to certain guesses.
@@ -49,7 +49,7 @@ void main() {
       expect(hangmanGame.correctGuesses().contains('a'), isTrue);
       expect(hangmanGame.wrongGuesses().contains('a'), isFalse);
       expect(returnValue, isTrue);
-    }, skip: true);
+    }, skip: false);
 
     test('When user guess incorrectly', () {
       // Make a variable that we will use to pass to the constructor as our word.
@@ -64,7 +64,7 @@ void main() {
       expect(hangmanGame.correctGuesses().isEmpty, isTrue);
       expect(hangmanGame.wrongGuesses(), 'z');
       expect(returnValue, isTrue);
-    }, skip: true);
+    }, skip: false);
 
     test('When user guesses same letter repeatedly (case-insensitive)', () {
       // Make a variable that we will use to pass to the constructor as our word.
@@ -95,7 +95,7 @@ void main() {
       bool acceptedCapitalQagain = hangmanGame.guess('Q');
       expect(hangmanGame.wrongGuesses(), 'q');
       expect(acceptedCapitalQagain, isFalse);
-    }, skip: true);
+    }, skip: false);
 
     // This nested group of tests will run through various invalid character guesses to see how the game responds.
     group('Invalid guesses', () {
@@ -107,7 +107,7 @@ void main() {
 
         // Guess empty string.
         expect(() => hangmanGame.guess(''), throwsArgumentError);
-      }, skip: true);
+      }, skip: false);
 
       test('User tries non letters (a-zA-Z)', () {
         String word = 'foobar';
@@ -116,7 +116,7 @@ void main() {
 
         // Guess nonletter.
         expect(() => hangmanGame.guess('&'), throwsArgumentError);
-      }, skip: true);
+      }, skip: false);
 
       test('User tries a null guess', () {
         String word = 'foobar';
@@ -125,7 +125,7 @@ void main() {
 
         // Guess null
         expect(() => hangmanGame.guess(null), throwsArgumentError);
-      }, skip: true);
+      }, skip: false);
 
       test('User guesses a string with more than one letter', () {
         String word = 'foobar';
@@ -134,7 +134,7 @@ void main() {
 
         // Guess multiple letters at once.
         expect(() => hangmanGame.guess('oo'), throwsArgumentError);
-      }, skip: true);
+      }, skip: false);
     });
   });
 
@@ -155,7 +155,7 @@ void main() {
 
       // We expect the game to return the correct word progress.
       expect(hangmanGame.blanksWithCorrectGuesses(), 'b-n-n-');
-    }, skip: true);
+    }, skip: false);
 
     test('with all wrong guesses', () {
       // Start a game with the word banana.
@@ -170,7 +170,7 @@ void main() {
 
       // We expect the game to return the correct word progress.
       expect(hangmanGame.blanksWithCorrectGuesses(), '------');
-    }, skip: true);
+    }, skip: false);
 
     test('with all letters guessed', () {
       // Start a game with the word banana.
@@ -185,7 +185,7 @@ void main() {
 
       // We expect the game to return the correct word progress.
       expect(hangmanGame.blanksWithCorrectGuesses(), 'banana');
-    }, skip: true);
+    }, skip: false);
   });
 
   //This test group will run several tests on
@@ -203,7 +203,7 @@ void main() {
 
       // Expect for the game to return a string of 'win' for its status.
       expect(hangmanGame.status(), 'win');
-    }, skip: true);
+    }, skip: false);
 
     test('status to return "lose" after 7 incorrect guesses', () {
       // Start a game with the word xyz.
@@ -222,7 +222,7 @@ void main() {
 
       // Expect for the game to return a string of 'lose' for its status.
       expect(hangmanGame.status(), 'lose');
-    }, skip: true);
+    }, skip: false);
 
     test('status to return "play" if neither win nor lose', () {
       // Start a game with the word play.
@@ -236,9 +236,9 @@ void main() {
       // Guess a letter correctly.
       hangmanGame.guess('p');
 
-      // xpect for the game to still return a string of 'play' for its status.
+      // expect for the game to still return a string of 'play' for its status.
       expect(hangmanGame.status(), 'play');
-    }, skip: true);
+    }, skip: false);
   });
 
   group("Starting Word", () {
@@ -246,6 +246,6 @@ void main() {
       bool areWeInIntegrationTest = true;
       String word = await HangmanGame.getStartingWord(areWeInIntegrationTest);
       expect(word, 'banana');
-    }, skip: true);
+    }, skip: false);
   });
 }
